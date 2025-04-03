@@ -5,7 +5,6 @@ const Login = () => {
   return (
     <div className={css.login_page}>
       <div className={css.login_container}>
-        <h2>Login</h2> <br />
         <div className={css.form_group}>
           <label>UserName:</label>
           <input type="text" placeholder='userName' />
@@ -18,9 +17,10 @@ const Login = () => {
           <label>Role:</label>
           <select name="role" id="role">
             <option value="admin">Admin</option>
-            <option value="admin">Student</option>
+            <option value="student">Student</option>
           </select>
         </div>
+        <button className={css.btn_login}>Login</button>
       </div>
     </div>
   )
