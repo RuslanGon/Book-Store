@@ -8,7 +8,7 @@ const [password, setPassword] = useState('')
 const [role, setRole] = useState('student')  
 
 const handleSubmit = () => {
-
+console.log(userName, password, role);
 }
 
   return (
