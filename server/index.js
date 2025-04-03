@@ -1,12 +1,11 @@
-import express from 'express'
-import dotenv from 'dotenv'
+import express from 'express';
+import dotenv from 'dotenv';
 import startServer from './db.js';
 
+dotenv.config();  // Сначала вызываем dotenv.config() для загрузки переменных окружения
 
-const app = express()
-startServer();
-dotenv.config()
+const app = express();
 
-app.listen(process.env.PORT, () => {
-    console.log('Server is Running');
-})
+// Передаем `app` в функцию startServer для подключения к базе данных и запуска сервера
+startServer(app);
+

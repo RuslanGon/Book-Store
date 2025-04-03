@@ -6,7 +6,7 @@ dotenv.config();
 async function startServer(app) {
   try {
     const { DB_USER, DB_PASSWORD, DB_NAME, PORT } = process.env;
-    const MONGODB_URI = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.9yeu1fb.mongodb.net/${DB_NAME}?retryWrites=true&w=majority&appName=Cluster0`;
+    const MONGODB_URI = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.lc6ql.mongodb.net/${DB_NAME}?retryWrites=true&w=majority&appName=Cluster0`;
 
     await mongoose.connect(MONGODB_URI);
     console.log("✅ MongoDB connected successfully");
