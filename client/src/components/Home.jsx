@@ -1,6 +1,6 @@
 import React from "react";
 import css from "./Home.module.css";
-// import hero from '../assets/hero.jpg'
+
 
 const Home = () => {
   return (
@@ -13,9 +13,7 @@ const Home = () => {
           and invaluable knowledge in our bookshop.
         </p>
       </div>
-      <div className={css.hero_image}>
-        {/* <img src={hero} alt="" /> */}
-      </div>
+      <div className={css.hero_image}></div>
     </div>
   );
 };
