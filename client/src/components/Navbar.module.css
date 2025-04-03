@@ -17,6 +17,7 @@ border-bottom: 1px solid purple ;
     font-size: 1.8rem;
     margin-right: 24px;
     color: gold;
+    text-decoration: none;
 }
 
 .navbar_right {
