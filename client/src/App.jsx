@@ -1,6 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home.jsx";
 import Navbar from "./components/Navbar.jsx";
+import Login from "./components/Login.jsx";
+import Books from "./components/Books.jsx";
 
 function App() {
   return (
@@ -8,6 +10,8 @@ function App() {
     <Navbar />
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/books" element={<Books />} />
     </Routes>
     </>
   );
