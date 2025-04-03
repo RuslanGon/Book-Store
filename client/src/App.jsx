@@ -3,6 +3,7 @@ import Home from "./components/Home.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Login from "./components/Login.jsx";
 import Books from "./components/Books.jsx";
+import 'normalize.css';
 
 function App() {
   return (
