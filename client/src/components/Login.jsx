@@ -8,6 +8,8 @@ const Login = () => {
   const [role, setRole] = useState('student');
   const [errorMessage, setErrorMessage] = useState(''); 
 
+axios.defaults.withCredentials = true
+
   const handleSubmit = async (e) => {
     e.preventDefault(); 
   
