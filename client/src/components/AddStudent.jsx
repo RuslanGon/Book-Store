@@ -31,7 +31,7 @@ const AddStudent = () => {
         setGrade('');
         setPassword('');
       } else {
-        setErrorMessage("You are  authorized.");
+        setErrorMessage("You are authorized.");
       }
     } catch (error) {
       console.error(error);
