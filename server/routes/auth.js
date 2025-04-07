@@ -31,8 +31,24 @@ router.post("/login", async (req, res) => {
       return res.status(200).json({ login: true, role: "admin" });
 
     } else if (role === "student") {
-      // Будущая реализация для студента
-      return res.status(501).json({ message: "Student login not implemented yet" });
+      const student = await UsertModel.findOne({ username });
+      if (!student) {
+        return res.status(404).json({ message: "Student not registered" });
+      }
+
+      const validPassword = await bcrypt.compare(password, student.password);
+      if (!validPassword) {
+        return res.status(401).json({ message: "Wrong password" });
+      }
+
+      const token = jwt.sign(
+        { username: student.username, role: "student" },
+        process.env.STUDENT_KEY, // добавь в .env файл STUDENT_KEY
+        { expiresIn: "1h" }
+      );
+
+      res.cookie("token", token, { httpOnly: true, secure: true, sameSite: 'strict' });
+      return res.status(200).json({ login: true, role: "student" });
 
     } else {
       return res.status(400).json({ message: "Invalid role" });
@@ -43,6 +59,7 @@ router.post("/login", async (req, res) => {
     res.status(500).json({ message: "Server error during login" });
   }
 });
+
 
 router.post('/register', async (req, res) => {
   try {

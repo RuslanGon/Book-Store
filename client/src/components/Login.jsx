@@ -30,9 +30,9 @@ axios.defaults.withCredentials = true
       if (res.data.login && res.data.role === "admin") {
         navigate("/dashboard");
       } 
-      // else if (res.data.role === "student") {
-      //   navigate("/student-dashboard"); // если будет отдельная страница
-      // }
+      else if (res.data.role === "student") {
+        navigate("/dashboard");
+      }
       setErrorMessage("");
     } catch (error) {
       console.error(error);
