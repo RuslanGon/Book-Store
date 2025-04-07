@@ -18,8 +18,6 @@ function App() {
       <Route path="/books" element={<Books />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/addstudent" element={<AddStudent />} />
-
-
     </Routes>
     </>
   );
