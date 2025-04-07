@@ -6,6 +6,7 @@ import Books from "./components/Books.jsx";
 import 'normalize.css';
 import './App.css'
 import Dashboard from "./components/Dashboard.jsx";
+import AddStudent from "./components/AddStudent.jsx";
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/books" element={<Books />} />
       <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/addstudent" element={<AddStudent />} />
+
 
     </Routes>
     </>
