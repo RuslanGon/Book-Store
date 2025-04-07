@@ -17,7 +17,7 @@ const AddStudent = () => {
       return;
     }
     try {
-      const res = await axios.post("http://localhost:3001", {
+      const res = await axios.post("http://localhost:3001/student/register", {
         username,
         password,
         roll,
