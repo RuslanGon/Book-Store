@@ -1,5 +1,6 @@
 import express from "express";
 import AdminModel from "../models/Admin.js";
+import UsertModel from '../models/Users.js'
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -40,6 +41,31 @@ router.post("/login", async (req, res) => {
   } catch (error) {
     console.error("Login error:", error.message);
     res.status(500).json({ message: "Server error during login" });
+  }
+});
+
+router.post('/register', async (req, res) => {
+  try {
+    const { username, password } = req.body;
+
+    if (!username || !password) {
+      return res.status(400).json({ message: "Username and password are required" });
+    }
+
+    const existingUser = await UsertModel.findOne({ username });
+    if (existingUser) {
+      return res.status(409).json({ message: "User already exists" });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const newUser = new UsertModel({ username, password: hashedPassword });
+    await newUser.save();
+
+    res.status(201).json({ registered: true, message: "User registered successfully" });
+  } catch (error) {
+    console.error("Registration error:", error.message);
+    res.status(500).json({ message: "Server error during registration" });
   }
 });
 
