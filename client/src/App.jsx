@@ -5,6 +5,7 @@ import Login from "./components/Login.jsx";
 import Books from "./components/Books.jsx";
 import 'normalize.css';
 import './App.css'
+import Dashboard from "./components/Dashboard.jsx";
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/books" element={<Books />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+
     </Routes>
     </>
   );

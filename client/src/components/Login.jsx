@@ -1,30 +1,42 @@
 import React, { useState } from 'react';
 import css from './Login.module.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  const [username, setUserNAme] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState('student');
+  const [role, setRole] = useState('admin');
   const [errorMessage, setErrorMessage] = useState(''); 
+  const navigate = useNavigate()
 
 axios.defaults.withCredentials = true
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); 
-  
+    e.preventDefault();
+
     if (!username || !password) {
-      setErrorMessage('Username and password are required');
+      setErrorMessage("Username and password are required");
       return;
     }
-  
+
     try {
-      const res = await axios.post('http://localhost:3001/auth/login', { username, password, role });
+      const res = await axios.post("http://localhost:3001/auth/login", {
+        username,
+        password,
+        role,
+      });
       console.log(res);
-      setErrorMessage(''); 
+      if (res.data.login && res.data.role === "admin") {
+        navigate("/dashboard");
+      } 
+      // else if (res.data.role === "student") {
+      //   navigate("/student-dashboard"); // если будет отдельная страница
+      // }
+      setErrorMessage("");
     } catch (error) {
       console.error(error);
-      setErrorMessage('Login failed. Please check your credentials.');
+      setErrorMessage("Login failed. Please check your credentials.");
     }
   };
 
@@ -38,7 +50,7 @@ axios.defaults.withCredentials = true
               type="text"
               placeholder="userName"
               value={username}
-              onChange={(e) => setUserNAme(e.target.value)}
+              onChange={(e) => setUsername(e.target.value)}
             />
           </div>
           <div className={css.form_group}>
