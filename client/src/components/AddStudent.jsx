@@ -28,7 +28,6 @@ const AddStudent = () => {
 
       if (res.data.login && res.data.role === "admin") {
         setErrorMessage('');
-        // Очистка формы
         setRoll('');
         setUsername('');
         setGrade('');
@@ -46,7 +45,6 @@ const AddStudent = () => {
     <div className={css.student_form_container}>
       <form className={css.student_form} onSubmit={handleSubmit}>
         <h2>Add Student</h2>
-
         <div className={css.student_group}>
           <label htmlFor="roll">Roll No:</label>
           <input
@@ -57,7 +55,6 @@ const AddStudent = () => {
             onChange={(e) => setRoll(e.target.value)}
           />
         </div>
-
         <div className={css.student_group}>
           <label htmlFor="username">User Name:</label>
           <input
@@ -68,7 +65,6 @@ const AddStudent = () => {
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
-
         <div className={css.student_group}>
           <label htmlFor="grade">Grade:</label>
           <input
@@ -79,7 +75,6 @@ const AddStudent = () => {
             onChange={(e) => setGrade(e.target.value)}
           />
         </div>
-
         <div className={css.student_group}>
           <label htmlFor="password">Password:</label>
           <input
@@ -90,9 +85,7 @@ const AddStudent = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-
         <button type="submit">Register</button>
-
         {errorMessage && <p className={css.error}>{errorMessage}</p>}
       </form>
     </div>
