@@ -8,6 +8,7 @@ import './App.css'
 import Dashboard from "./components/Dashboard.jsx";
 import AddStudent from "./components/AddStudent.jsx";
 import Register from "./components/Register.jsx";
+import AddBook from "./components/AddBook.jsx";
 
 function App() {
   return (
@@ -17,9 +18,11 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/books" element={<Books />} />
-      <Route path="/dashboard" element={<Dashboard />} />Register
+      <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/addstudent" element={<AddStudent />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/addbook" element={<AddBook />} />
+
 
     </Routes>
     </>
