@@ -11,40 +11,36 @@
     padding: 2rem 2.5rem;
     border-radius: 12px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    width: 350px;
+    width: 370px;
   }
   
   .form_title {
     text-align: center;
     margin-bottom: 1.5rem;
-    font-size: 24px;
+    font-size: 26px;
     color: #333;
+    font-weight: 600;
   }
   
   .form_group {
     display: flex;
     flex-direction: column;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.4rem;
   }
   
   .form_group label {
-    margin-bottom: 0.5rem;
-    font-weight: 500;
+    margin-bottom: 0.6rem;
+    font-weight: 600;
     color: #333;
+    font-size: 18px; 
   }
   
   .form_group input {
-    padding: 0.5rem;
+    padding: 0.7rem; 
     border-radius: 6px;
     border: 1px solid #ccc;
-    font-size: 16px;
-  }
-  
-  .form_group select {
-    padding: 0.5rem;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 16px;
+    font-size: 17px; 
+    font-weight: 600;
   }
   
   .btn_login {
@@ -54,7 +50,7 @@
     color: #fff;
     border: none;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s ease;
