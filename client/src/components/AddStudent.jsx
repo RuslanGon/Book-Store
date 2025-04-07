@@ -19,6 +19,11 @@ const AddStudent = () => {
                 <label htmlFor="grade">Grade:</label>
                 <input type="text" id='grade' name='grade' />
             </div>
+            <div className={css.student_group}>
+                <label htmlFor="password">Password:</label>
+                <input type="text" id='password' name='password' />
+            </div>
+            <button type='submit'>Register</button>
         </form>
 
     </div>

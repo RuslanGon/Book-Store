@@ -1,0 +1,66 @@
+.student_form_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f3f6fc; /* светло-голубой фон */
+  }
+  
+  .student_form {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .student_form h2 {
+    text-align: center;
+    margin-bottom: 24px;
+    color: #2c3e50; /* тёмно-синий */
+  }
+  
+  .student_group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .student_group label {
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #34495e;
+  }
+  
+  .student_group input {
+    padding: 10px;
+    border: 1px solid #ccd6dd;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+  }
+  
+  .student_group input:focus {
+    border-color: #3498db;
+    outline: none;
+  }
+  
+  button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #2980b9;
+  }
+  
