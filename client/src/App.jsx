@@ -7,6 +7,7 @@ import 'normalize.css';
 import './App.css'
 import Dashboard from "./components/Dashboard.jsx";
 import AddStudent from "./components/AddStudent.jsx";
+import Register from "./components/Register.jsx";
 
 function App() {
   return (
@@ -16,8 +17,10 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/books" element={<Books />} />
-      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/dashboard" element={<Dashboard />} />Register
       <Route path="/addstudent" element={<AddStudent />} />
+      <Route path="/register" element={<Register />} />
+
     </Routes>
     </>
   );
