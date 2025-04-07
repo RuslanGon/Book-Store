@@ -12,12 +12,10 @@ const AddStudent = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Валидация: проверяем, что все поля заполнены
     if (!roll || !username || !grade || !password) {
       setErrorMessage("All fields are required.");
       return;
     }
-
     try {
       const res = await axios.post("http://localhost:3001", {
         username,
