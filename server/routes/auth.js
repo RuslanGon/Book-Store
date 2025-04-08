@@ -110,7 +110,7 @@ const verifyAdmin = (req, res, next) => {
     if (error) {
       return res.status(401).json({ message: "Invalid token." });
     }
-    if (decoded.role !== "admin") {
+    if (decoded.role !== "admin" || decoded.role !== "student" ) {
       return res.status(403).json({ message: "Access denied. Admins only." });
     }
     req.username = decoded.username;
@@ -119,4 +119,4 @@ const verifyAdmin = (req, res, next) => {
   });
 };
 
-export { router as AdminRouter };
+export { router as AdminRouter, verifyAdmin };

@@ -2,6 +2,7 @@ import express from "express";
 import StudentModel from '../models/Student.js';
 import bcrypt from "bcrypt";
 
+
 const router = express.Router();
 
 router.post("/register", async (req, res) => {
