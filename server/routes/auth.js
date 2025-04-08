@@ -79,7 +79,7 @@ router.post('/register', async (req, res) => {
     const newUser = new UsertModel({
       username,
       password: hashedPassword,
-      // Не добавляем roll и grade, если они не переданы
+
     });
 
     await newUser.save();
