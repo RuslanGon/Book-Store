@@ -63,10 +63,10 @@ router.post("/login", async (req, res) => {
 
 router.post('/register', async (req, res) => {
   try {
-    const { username, password } = req.body;
+    const { username, password, roll, grade } = req.body;
 
-    if (!username || !password) {
-      return res.status(400).json({ message: "Username and password are required" });
+    if (!username || !password || !roll || !grade) {
+      return res.status(400).json({ message: "All fields are required" });
     }
 
     const existingUser = await UsertModel.findOne({ username });
@@ -76,31 +76,49 @@ router.post('/register', async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newUser = new UsertModel({ username, password: hashedPassword });
+    const newUser = new UsertModel({
+      username,
+      password: hashedPassword,
+      roll,
+      grade,
+    });
+
     await newUser.save();
 
-    res.status(201).json({ registered: true, message: "User registered successfully" });
+    // 🔐 Автоматический логин после регистрации
+    const token = jwt.sign(
+      { username: newUser.username, role: "student" },
+      process.env.STUDENT_KEY,
+      { expiresIn: "1h" }
+    );
+
+    res.cookie("token", token, { httpOnly: true, secure: true, sameSite: 'strict' });
+
+    res.status(201).json({ registered: true, login: true, role: "student" });
+
   } catch (error) {
     console.error("Registration error:", error.message);
     res.status(500).json({ message: "Server error during registration" });
   }
 });
 
+
 const verifyAdmin = (req, res, next) => {
   const token = req.cookies.token;
   if (!token) {
-    return res.json({ message: "Invalid Admin" });
-  } else {
-    jwt.verify(token, process.env.ADMIN_KEY, (error, decode) => {
-      if (error) {
-        return res.json({ message: "Invalid Token" });
-      } else {
-        req.username = decode.username
-        req.role = decode.role
-        next()
-      }
-    });
+    return res.status(401).json({ message: "Access denied. No token provided." });
   }
+  jwt.verify(token, process.env.ADMIN_KEY, (error, decoded) => {
+    if (error) {
+      return res.status(401).json({ message: "Invalid token." });
+    }
+    if (decoded.role !== "admin") {
+      return res.status(403).json({ message: "Access denied. Admins only." });
+    }
+    req.username = decoded.username;
+    req.role = decoded.role;
+    next();
+  });
 };
 
 export { router as AdminRouter };
