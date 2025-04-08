@@ -63,10 +63,10 @@ router.post("/login", async (req, res) => {
 
 router.post('/register', async (req, res) => {
   try {
-    const { username, password, roll, grade } = req.body;
+    const { username, password } = req.body;
 
-    if (!username || !password || !roll || !grade) {
-      return res.status(400).json({ message: "All fields are required" });
+    if (!username || !password) {
+      return res.status(400).json({ message: "Username and password are required" });
     }
 
     const existingUser = await UsertModel.findOne({ username });
@@ -79,13 +79,11 @@ router.post('/register', async (req, res) => {
     const newUser = new UsertModel({
       username,
       password: hashedPassword,
-      roll,
-      grade,
+      // Не добавляем roll и grade, если они не переданы
     });
 
     await newUser.save();
 
-    // 🔐 Автоматический логин после регистрации
     const token = jwt.sign(
       { username: newUser.username, role: "student" },
       process.env.STUDENT_KEY,
