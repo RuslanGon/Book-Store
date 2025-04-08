@@ -3,7 +3,7 @@ import css from './Login.module.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({setBar}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('admin');
@@ -28,9 +28,12 @@ axios.defaults.withCredentials = true
       });
       console.log(res);
       if (res.data.login && res.data.role === "admin") {
+        setBar('admin')
         navigate("/dashboard");
       } 
       else if (res.data.role === "student") {
+        setBar('student')
+        console.log("Перенаправление на главную страницу...");
         navigate("/");
       }
       setErrorMessage("");

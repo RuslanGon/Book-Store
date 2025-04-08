@@ -9,14 +9,18 @@ import Dashboard from "./components/Dashboard.jsx";
 import AddStudent from "./components/AddStudent.jsx";
 import Register from "./components/Register.jsx";
 import AddBook from "./components/AddBook.jsx";
+import { useState } from "react";
 
 function App() {
+
+const [bar, setBar] = useState('')  
+
   return (
     <>
-    <Navbar />
+    <Navbar bar={bar}/>
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/login" element={<Login />} />
+      <Route path="/login" element={<Login setBar={setBar}/>} />
       <Route path="/books" element={<Books />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/addstudent" element={<AddStudent />} />
