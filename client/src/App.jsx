@@ -27,7 +27,7 @@ const [bar, setBar] = useState('')
       <Route path="/addstudent" element={<AddStudent />} />
       <Route path="/register" element={<Register />} />
       <Route path="/addbook" element={<AddBook />} />
-      <Route path="/logout" element={<LogOut />} />
+      <Route path="/logout" element={<LogOut setBar={setBar} />} />
 
 
 
