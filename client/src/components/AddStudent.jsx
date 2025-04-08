@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import css from './AddStudent.module.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
+axios.defaults.withCredentials = true; // Для работы с сессиями (если используешь cookie)
 
 const AddStudent = () => {
   const [roll, setRoll] = useState('');
@@ -8,6 +11,7 @@ const AddStudent = () => {
   const [password, setPassword] = useState('');
   const [grade, setGrade] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,6 +20,7 @@ const AddStudent = () => {
       setErrorMessage("All fields are required.");
       return;
     }
+
     try {
       const res = await axios.post("http://localhost:3001/student/register", {
         username,
@@ -24,21 +29,27 @@ const AddStudent = () => {
         grade
       });
 
-      if (res.data.login && res.data.role === "admin") {
-        setErrorMessage('');
+      console.log("Response from backend:", res.data);
+
+      if (res.data.registered) {
+        // Очищаем форму
         setRoll('');
         setUsername('');
         setGrade('');
         setPassword('');
+        setErrorMessage('');
+
+
+        navigate("/dashboard");
       } else {
         setErrorMessage("You are authorized.");
       }
+
     } catch (error) {
-      console.error(error);
-      setErrorMessage("Login failed. Please check your credentials.");
+      console.error("Registration error:", error);
+      setErrorMessage("Registration failed. Please check your credentials.");
     }
   };
-
   return (
     <div className={css.student_form_container}>
       <form className={css.student_form} onSubmit={handleSubmit}>
