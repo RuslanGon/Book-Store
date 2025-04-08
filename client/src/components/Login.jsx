@@ -31,7 +31,7 @@ axios.defaults.withCredentials = true
         navigate("/dashboard");
       } 
       else if (res.data.role === "student") {
-        navigate("/dashboard");
+        navigate("/");
       }
       setErrorMessage("");
     } catch (error) {
