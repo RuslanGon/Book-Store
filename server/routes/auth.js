@@ -1,6 +1,7 @@
 import express from "express";
 import AdminModel from "../models/Admin.js";
 import UsertModel from '../models/Users.js'
+import StudentModel from '../models/Student.js'
 import bcrypt from "bcrypt";
 import jwt, { decode } from "jsonwebtoken";
 
@@ -30,6 +31,8 @@ router.post("/login", async (req, res) => {
       res.cookie("token", token, { httpOnly: true, secure: true, sameSite: 'strict' });
       return res.status(200).json({ login: true, role: "admin" });
 
+      
+
     } else if (role === "student") {
       const student = await UsertModel.findOne({ username });
       if (!student) {
@@ -43,7 +46,7 @@ router.post("/login", async (req, res) => {
 
       const token = jwt.sign(
         { username: student.username, role: "student" },
-        process.env.STUDENT_KEY, // добавь в .env файл STUDENT_KEY
+        process.env.STUDENT_KEY, 
         { expiresIn: "1h" }
       );
 
