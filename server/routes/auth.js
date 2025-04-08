@@ -2,7 +2,7 @@ import express from "express";
 import AdminModel from "../models/Admin.js";
 import UsertModel from '../models/Users.js'
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
+import jwt, { decode } from "jsonwebtoken";
 
 const router = express.Router();
 
@@ -85,5 +85,22 @@ router.post('/register', async (req, res) => {
     res.status(500).json({ message: "Server error during registration" });
   }
 });
+
+const verifyAdmin = (req, res, next) => {
+  const token = req.cookies.token;
+  if (!token) {
+    return res.json({ message: "Invalid Admin" });
+  } else {
+    jwt.verify(token, process.env.ADMIN_KEY, (error, decode) => {
+      if (error) {
+        return res.json({ message: "Invalid Token" });
+      } else {
+        req.username = decode.username
+        req.role = decode.role
+        next()
+      }
+    });
+  }
+};
 
 export { router as AdminRouter };
