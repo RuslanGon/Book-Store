@@ -17,10 +17,14 @@ const Navbar = ({bar}) => {
         <Link className={css.navbar_link}  to='/dashboard'>Dashboard</Link>
         </>
         }
-        {bar === '' &&
+        {bar === '' ?
         <>
         <Link className={css.navbar_link}  to='/login'>Login</Link>
         <Link className={css.navbar_link}  to='/register'>Register</Link>
+        </>
+        :
+        <>
+        <Link className={css.navbar_link}  to='/logout'>LogOut</Link>
         </>
         }
     

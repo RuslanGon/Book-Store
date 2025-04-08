@@ -10,6 +10,7 @@ import AddStudent from "./components/AddStudent.jsx";
 import Register from "./components/Register.jsx";
 import AddBook from "./components/AddBook.jsx";
 import { useState } from "react";
+import LogOut from "./components/LogOut.jsx";
 
 function App() {
 
@@ -26,6 +27,8 @@ const [bar, setBar] = useState('')
       <Route path="/addstudent" element={<AddStudent />} />
       <Route path="/register" element={<Register />} />
       <Route path="/addbook" element={<AddBook />} />
+      <Route path="/logout" element={<LogOut />} />
+
 
 
     </Routes>
