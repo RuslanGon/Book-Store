@@ -5,6 +5,7 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser';
 import {AdminRouter} from './routes/auth.js'
 import {StudentRouter} from './routes/student.js'
+import {BookRouter} from './routes/book.js'
 
 dotenv.config(); 
 
@@ -18,6 +19,10 @@ app.use('/auth', AdminRouter)
 app.use('/auth', AdminRouter)
 // register student
 app.use('/student', StudentRouter)
+// add book
+app.use('/book', BookRouter)
+
+
 
 
 startServer(app);
