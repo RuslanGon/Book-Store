@@ -33,7 +33,6 @@ axios.defaults.withCredentials = true
       } 
       else if (res.data.role === "student") {
         setBar('student')
-        console.log("Перенаправление на главную страницу...");
         navigate("/");
       }
       setErrorMessage("");
