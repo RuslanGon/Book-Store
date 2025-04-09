@@ -122,6 +122,35 @@ const verifyAdmin = (req, res, next) => {
   });
 };
 
+const verifyUser = (req, res, next) => {
+  const token = req.cookies.token;
+
+  if (!token) {
+    return res.status(401).json({ message: "Invalid user." });
+  }
+
+  jwt.verify(token, process.env.ADMIN_KEY, (error, decoded) => {
+    if (!error) {
+      req.username = decoded.username;
+      req.role = decoded.role;
+      return next(); 
+    }
+    jwt.verify(token, process.env.STUDENT_KEY, (error, decoded) => {
+      if (error) {
+        return res.status(401).json({ message: "Invalid user." });
+      }
+
+      req.username = decoded.username;
+      req.role = decoded.role;
+      return next();
+    });
+  });
+};
+
+router.get("/verify", async (req, res) => {
+
+})
+
 router.get('/logout', (req, res) => {
   res.clearCookie('token')
   return res.json({logout: true})

@@ -20,7 +20,7 @@ const [bar, setBar] = useState('')
     <>
     <Navbar bar={bar}/>
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Home setBar={setBar} />} />
       <Route path="/login" element={<Login setBar={setBar}/>} />
       <Route path="/books" element={<Books />} />
       <Route path="/dashboard" element={<Dashboard />} />

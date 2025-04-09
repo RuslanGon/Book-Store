@@ -1,8 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import css from "./Home.module.css";
+import axios from "axios";
 
+const Home = ({setBar}) => {
 
-const Home = () => {
+  useEffect(() => {
+    const verifyUser = async () => {
+      try {
+        const res = await axios.get("/auth/verify");
+        if (res.data.login) {
+          setBar(res.data.role);
+        } else {
+          setBar("");
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    verifyUser();
+  }, [setBar]);
+
   return (
     <div className={css.hero}>
       <div className={css.hero_content}>
