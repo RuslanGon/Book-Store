@@ -147,8 +147,8 @@ const verifyUser = (req, res, next) => {
   });
 };
 
-router.get("/verify", async (req, res) => {
-
+router.get("/verify", verifyUser, async (req, res) => {
+return res.json({login: true, role: req.role})
 })
 
 router.get('/logout', (req, res) => {
