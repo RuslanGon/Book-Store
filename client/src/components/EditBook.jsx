@@ -16,7 +16,7 @@ const EditBook = () => {
   useEffect(() => {
     const fetchBook = async () => {
       try {
-        const res = await axios.get(`http://localhost:3001/book/book/${id}`);
+        const res = await axios.get(`http://localhost:3001/book/${id}`);
         setName(res.data.name);
         setAuthor(res.data.author);
         setImageUrl(res.data.imageUrl);
