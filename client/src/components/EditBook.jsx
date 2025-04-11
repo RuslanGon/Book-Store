@@ -17,11 +17,11 @@ const EditBook = () => {
     const fetchBook = async () => {
       try {
         console.log(id);
-        const res = await axios.patch(`http://localhost:3001/book/book/${id}`);
-        const { name, author, imageUrl } = res.data;
-        setName(name || ''); 
-        setAuthor(author || '');
-        setImageUrl(imageUrl || '');
+        const res = await axios.get(`http://localhost:3001/book/book/${id}`);
+        // console.log(res);
+        setName(res.data.name); 
+        setAuthor(res.data.author);
+        setImageUrl(res.data.imageUrl);
         setErrorMessage('');
       } catch (error) {
         console.error("Error fetching book:", error);

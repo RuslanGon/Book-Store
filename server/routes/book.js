@@ -36,33 +36,20 @@ router.get('/books', async (req, res) => {
   }
 });
 
-router.get('/book/:id', async (req, res) => {
-  const book = await BookModel.findById(req.params.id);
-  if (!book) return res.status(404).json({ message: 'Book not found' });
-  res.json(book);
-});
-
-router.patch('/book/:id', async (req, res) => {
+router.get("/book/:id", async (req, res) => {
   try {
-    const updatedBook = await BookModel.findByIdAndUpdate(
-      req.params.id,
-      {
-        name: req.body.name,
-        author: req.body.author,
-        imageUrl: req.body.imageUrl
-      },
-      { new: true }
-    );
-
-    if (!updatedBook) {
-      return res.status(404).json({ updated: false, message: 'Book not found' });
+    const id = req.params.id;
+    const book = await BookModel.findById(id); // Здесь передаем id напрямую
+    if (!book) {
+      return res.status(404).json({ message: "Book not found" });
     }
-
-    res.json({ updated: true, book: updatedBook });
+    return res.json({ book });
   } catch (error) {
-    console.error("Update error:", error);
-    res.status(500).json({ updated: false, message: error.message });
+    console.error("Get book error:", error.message);
+    return res.status(500).json({ message: "Error getting book" });
   }
 });
+
+
 
 export { router as BookRouter };
