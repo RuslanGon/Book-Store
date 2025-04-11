@@ -17,9 +17,10 @@ const EditBook = () => {
     const fetchBook = async () => {
       try {
         const res = await axios.get(`http://localhost:3001/book/${id}`);
-        setName(res.data.name);
-        setAuthor(res.data.author);
-        setImageUrl(res.data.imageUrl);
+        const { name, author, imageUrl } = res.data;
+        setName(name);
+        setAuthor(author);
+        setImageUrl(imageUrl);
         setErrorMessage('');
       } catch (error) {
         console.error("Error fetching book:", error);
@@ -39,7 +40,7 @@ const EditBook = () => {
     }
 
     try {
-      const res = await axios.patch(`http://localhost:3001/book/book/${id}`, {
+      const res = await axios.patch(`http://localhost:3001/book/${id}`, {
         name,
         author,
         imageUrl
@@ -48,6 +49,7 @@ const EditBook = () => {
       console.log("Response from backend:", res.data);
 
       if (res.data.updated) {
+        setErrorMessage('');
         navigate("/books");
       } else {
         setErrorMessage("Failed to update the book.");
