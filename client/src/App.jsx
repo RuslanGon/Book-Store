@@ -12,6 +12,7 @@ import AddBook from "./components/AddBook.jsx";
 import { useState } from "react";
 import LogOut from "./components/LogOut.jsx";
 import EditBook from "./components/EditBook.jsx";
+import DeleteBook from "./components/DeleteBook.jsx";
 
 function App() {
 
@@ -29,7 +30,7 @@ const [bar, setBar] = useState('')
       <Route path="/register" element={<Register />} />
       <Route path="/addbook" element={<AddBook />} />
       <Route path="/book/:id" element={<EditBook />} />
-
+      <Route path="/delete/:id" element={<DeleteBook />} />
       <Route path="/logout" element={<LogOut setBar={setBar} />} />
     </Routes>
     </>

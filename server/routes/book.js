@@ -64,6 +64,19 @@ router.put("/book/:id", async (req, res) => {
   }
 });
 
+router.delete('/book/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const book = await BookModel.findByIdAndDelete(id)
+    if (!book) {
+      return res.status(404).json({ message: "Book not found" });
+    }
+    return res.json({ deleted: true, book });
+  } catch (error) {
+    console.error("Get book error:", error.message);
+    return res.status(500).json({ message: "Error getting book" });
+  }
+})
 
 
 export { router as BookRouter };

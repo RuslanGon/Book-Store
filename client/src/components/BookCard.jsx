@@ -16,7 +16,7 @@ const BookCard = ({book}) => {
         </div>
         <div className={css.book_actions}>
             <button><Link to={`/book/${book._id}`}>edit</Link></button>
-            <button>delete</button>
+            <button><Link to={`/delete/${book._id}`}>delete</Link></button>
         </div>
     </div>
   )
