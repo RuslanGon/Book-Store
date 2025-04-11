@@ -16,6 +16,7 @@ const EditBook = () => {
   useEffect(() => {
     const fetchBook = async () => {
       try {
+        console.log(id);
         const res = await axios.patch(`http://localhost:3001/book/book/${id}`);
         const { name, author, imageUrl } = res.data;
         setName(name || ''); 

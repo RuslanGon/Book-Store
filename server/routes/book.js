@@ -61,7 +61,7 @@ router.patch('/book/:id', async (req, res) => {
     res.json({ updated: true, book: updatedBook });
   } catch (error) {
     console.error("Update error:", error);
-    res.status(500).json({ updated: false });
+    res.status(500).json({ updated: false, message: error.message });
   }
 });
 
