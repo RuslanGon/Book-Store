@@ -41,7 +41,7 @@ const EditBook = () => {
     }
 
     try {
-      const res = await axios.put(`http://localhost:3001/book/update${id}`, {
+      const res = await axios.put(`http://localhost:3001/book/book/${id}`, {
         name,
         author,
         imageUrl
