@@ -13,6 +13,10 @@ const BookCard = ({book}) => {
             <h3>{name}</h3>
             <p>{author}</p>
         </div>
+        <div className={css.book_actions}>
+            <button>edit</button>
+            <button>delete</button>
+        </div>
     </div>
   )
 }
