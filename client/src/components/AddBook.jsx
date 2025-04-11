@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import css from './AddBook.module.css';
 import axios from 'axios';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 axios.defaults.withCredentials = true;
 
@@ -10,7 +10,7 @@ const AddBook = () => {
   const [author, setAuthor] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,12 +29,12 @@ const AddBook = () => {
 
       console.log("Response from backend:", res.data);
 
-      if (res.data.success) {
+      if (res.data.added) {
         setName('');
         setAuthor('');
         setImageUrl('');
         setErrorMessage('');
-        // navigate("/books");
+        navigate("/books");
       } else {
         setErrorMessage("Failed to add the book.");
       }
