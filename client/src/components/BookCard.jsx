@@ -1,5 +1,6 @@
 import React from 'react'
 import css from './BookCard.module.css';
+import { Link } from 'react-router-dom';
 
 
 const BookCard = ({book}) => {
@@ -14,7 +15,7 @@ const BookCard = ({book}) => {
             <p>{author}</p>
         </div>
         <div className={css.book_actions}>
-            <button>edit</button>
+            <button><Link to={`/book/${book._id}`}>edit</Link></button>
             <button>delete</button>
         </div>
     </div>
