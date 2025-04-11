@@ -16,18 +16,18 @@ const EditBook = () => {
   useEffect(() => {
     const fetchBook = async () => {
       try {
-        const res = await axios.get(`http://localhost:3001/book/${id}`);
+        const res = await axios.patch(`http://localhost:3001/book/book/${id}`);
         const { name, author, imageUrl } = res.data;
-        setName(name);
-        setAuthor(author);
-        setImageUrl(imageUrl);
+        setName(name || ''); 
+        setAuthor(author || '');
+        setImageUrl(imageUrl || '');
         setErrorMessage('');
       } catch (error) {
         console.error("Error fetching book:", error);
         setErrorMessage("Failed to load book.");
       }
     };
-
+  
     fetchBook();
   }, [id]);
 
