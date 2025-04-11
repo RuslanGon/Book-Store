@@ -26,4 +26,14 @@ router.post("/add", async (req, res) => {
   }
 });
 
+router.get('/books', async (req, res) => {
+  try {
+    const books = await BookModel.find();
+    return res.json({ books });
+  } catch (error) {
+    console.error("Get books error:", error.message);
+    return res.status(500).json({ message: "Error getting books" });
+  }
+});
+
 export { router as BookRouter };
