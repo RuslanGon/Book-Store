@@ -10,7 +10,7 @@ const Books = ({bar}) => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const res = await axios.get("https://book-store-ma07.onrender.com/book/books");
+        const res = await axios.get("https://book-store-gih2.onrender.com/book/books");
         // http://localhost:3001/book/books
         setBooks(res.data.books);
         console.log(res.data);

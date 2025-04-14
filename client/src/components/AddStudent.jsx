@@ -22,7 +22,7 @@ const AddStudent = () => {
     }
 
     try {
-      const res = await axios.post("https://book-store-ma07.onrender.com/student/register", {
+      const res = await axios.post("https://book-store-gih2.onrender.com/student/register", {
         // http://localhost:3001/student/register
         username,
         password,

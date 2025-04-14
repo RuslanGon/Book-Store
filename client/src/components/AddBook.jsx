@@ -21,7 +21,7 @@ const AddBook = () => {
     }
 
     try {
-      const res = await axios.post("https://book-store-ma07.onrender.com/book/add", {
+      const res = await axios.post("https://book-store-gih2.onrender.com/book/add", {
         // http://localhost:3001/book/add
         name,
         author,

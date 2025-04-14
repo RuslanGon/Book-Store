@@ -17,7 +17,8 @@ const EditBook = () => {
     const fetchBook = async () => {
       try {
         console.log(id);
-        const res = await axios.get(`http://localhost:3001/book/book/${id}`);
+        const res = await axios.get(`https://book-store-gih2.onrender.com/book/book/${id}`);
+        // http://localhost:3001/book/book/${id}
         // console.log(res);
         setName(res.data.name); 
         setAuthor(res.data.author);
@@ -41,7 +42,7 @@ const EditBook = () => {
     }
 
     try {
-      const res = await axios.put(`https://book-store-ma07.onrender.com/book/book/${id}`, {
+      const res = await axios.put(`https://book-store-gih2.onrender.com/book/book/${id}`, {
         // http://localhost:3001/book/book/${id}
         name,
         author,

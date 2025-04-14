@@ -7,7 +7,7 @@ const Home = ({setBar}) => {
   useEffect(() => {
     const verifyUser = async () => {
       try {
-        const res = await axios.get("https://book-store-ma07.onrender.com/auth/verify");
+        const res = await axios.get("https://book-store-gih2.onrender.com/auth/verify");
         // http://localhost:3001/auth/verify
         if (res.data.login) {
           setBar(res.data.role);

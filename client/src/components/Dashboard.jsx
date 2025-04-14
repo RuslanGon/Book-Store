@@ -11,7 +11,7 @@ const [books, setBooks] = useState(0)
 useEffect(() => {
   const fetchDashboard = async () => {
     try {
-      const res = await axios.get("https://book-store-ma07.onrender.com/dashboard");
+      const res = await axios.get("https://book-store-gih2.onrender.com/dashboard");
       // http://localhost:3001/dashboard
       if (res.data.ok) {
         setStudents(res.data.student);

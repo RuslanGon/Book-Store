@@ -8,7 +8,7 @@ const LogOut = ({setBar}) => {
   useEffect(() => {
     const logout = async () => {
       try {
-        const response = await axios.get("https://book-store-ma07.onrender.com/auth/logout");
+        const response = await axios.get("https://book-store-gih2.onrender.com/auth/logout");
         // http://localhost:3001/auth/logout
         console.log(response.data); 
         setBar('')
