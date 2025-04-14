@@ -41,7 +41,8 @@ const EditBook = () => {
     }
 
     try {
-      const res = await axios.put(`http://localhost:3001/book/book/${id}`, {
+      const res = await axios.put(`https://book-store-ma07.onrender.com/book/book/${id}`, {
+        // http://localhost:3001/book/book/${id}
         name,
         author,
         imageUrl

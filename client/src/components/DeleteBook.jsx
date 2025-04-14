@@ -10,7 +10,8 @@ const DeleteBook = () => {
     const deleteBook = async () => {
       try {
         const response = await axios.delete(
-          `http://localhost:3001/book/book/${id}`
+          `https://book-store-ma07.onrender.com/book/book/${id}`
+          // `http://localhost:3001/book/book/${id}`
         );
         console.log(response.data);
           navigate("/books");
