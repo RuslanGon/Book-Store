@@ -14,7 +14,7 @@ dotenv.config();
 
 const app = express();
 app.use(express.json())
-app.use(cors({origin: ['http://localhost:5173','https://book-store-mocha-two.vercel.app/'], 
+app.use(cors({origin: ['http://localhost:5173','https://book-store-mocha-two.vercel.app'], 
 
 credentials: true}))
 app.use(cookieParser())
