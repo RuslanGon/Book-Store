@@ -4,7 +4,7 @@ import css from './Books.module.css';
 import BookCard from "./BookCard.jsx";
 
 
-const Books = () => {
+const Books = ({bar}) => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const Books = () => {
   return (
     <div className={css.book_list}>
       {books.map((book) => (
-        <BookCard key={book._id} book={book} />
+        <BookCard key={book._id} book={book} bar={bar} />
       ))}
     </div>
   );
